@@ -1,0 +1,21 @@
+nav {
+    background: url("https://media.giphy.com/media/FZzbTJyRTwPuw/giphy.gif");
+    background-size: 100% auto;
+    
+}
+#weather-dashboard {
+    font-size: 250%;
+    margin-left: 20px;
+    
+}
+#weather-format {
+    color: #6c6c93;
+    text-shadow: 2px 2px black;
+}
+
+#dash-format {
+    font-size: 175%;
+    color: whitesmoke;
+    text-shadow: 2px 2px #090920;
+          }
+
