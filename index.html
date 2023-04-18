@@ -23,14 +23,14 @@
   <body>
 
     <header>
-        <nav style="height: 150px"; class="vw-100  navbar navbar-light bg-light">
+        <nav style="height: 150px"; class="vw-100 navbar navbar-light bg-light">
             <a id = "weather-dashboard" class="navbar-brand" href="#">
               <span id="weather-format">Weather</span> <span id="dash-format">Dashboard</span>
             </a>
           </nav>
     </header>
 
-    <main class="container-fluid vh-100 vw-100 row">
+    <main class="container-fluid h-100 vw-100 row">
 
         <div class="col-4 col-md-4 col-lg-4">
             <div id="search-bar" class="p-2 input-group">
@@ -38,6 +38,7 @@
 
                 <form id="form1" class="form-inline">
                       <div class="form-group mx-2 mb-2">
+                        <label style="font-size: 20px; font-weight: 600; color: white" for="city-input">City</label>
                        <input type="text" class="form-control" id="city-input" placeholder="Your City">
                     </div>
                     <button id="searchBtn" type="submit" class="btn btn-primary m-2">Submit</button>
@@ -46,11 +47,11 @@
             </div>
         </div>
 
-        <div class="col-8 col-md-8 col-lg-8">
+        <div class="col-8">
             <div id="forecasttoday" class="m-3 card col-8">
                 
                 <div class="card-body">
-                <h5 id="forecasttodayh5" class="card-title"></h5>
+                <h5 id="forecasttodayh5" class="card-title"></h5><img id="iconToday" src="">
                 <p id="forecasttodayptag1" class="card-text"></p>
                 <p id="forecasttodayptag2" class="card-text"></p>
                 <p id="forecasttodayptag3" class="card-text"></p>
@@ -62,11 +63,11 @@
             </div>
 
             <div class ="row">
-                <div id="fiveday1" class="m-1 card col-2">
+                <div id="fiveday1" class="fiveday m-1 card col-4 col md-4 col-lg-2">
                 
                     <div class="card-body">
 
-                    <h5 id="fiveday1h5" class="card-title"></h5>
+                    <h5 id="fiveday1h5" class="card-title"></h5><img id="iconfiveday1" src="">
                     <p id="fiveday1ptag1" class="card-text"></p>
                     <p id="fiveday1ptag2" class="card-text"></p>
                     <p id="fiveday1ptag3" class="card-text"></p>
@@ -76,10 +77,10 @@
 
                 </div>
 
-                <div id="fiveday2" class="m-1 card col-2">
+                <div id="fiveday2" class="fiveday m-1 card col-4 col md-4 col-lg-2">
                 
                         <div class="card-body">
-                        <h5 id="fiveday2h5" class="card-title"></h5>
+                        <h5 id="fiveday2h5" class="card-title"></h5><img id="iconfiveday2">
                         <p id="fiveday2ptag1" class="card-text"></p>
                         <p id="fiveday2ptag2" class="card-text"></p>
                         <p id="fiveday2ptag3" class="card-text"></p>
@@ -88,10 +89,10 @@
                         </div>
                 </div>
 
-                <div id="fiveday3" class="m-1 card col-2">
+                <div id="fiveday3" class="fiveday m-1 card col-4 col md-4 col-lg-2">
                 
                     <div class="card-body">
-                        <h5 id="fiveday3h5" class="card-title"></h5>
+                        <h5 id="fiveday3h5" class="card-title"></h5><img id="iconfiveday3" src="">
                         <p id="fiveday3ptag1" class="card-text"></p>
                         <p id="fiveday3ptag2" class="card-text"></p>
                         <p id="fiveday3ptag3" class="card-text"></p>
@@ -100,10 +101,10 @@
                     </div>
                 </div>
 
-                <div id="fiveday4" class="m-1 card col-2">
+                <div id="fiveday4" class="fiveday m-1 card col-4 col md-4 col-lg-2">
                 
                     <div class="card-body">
-                        <h5 id="fiveday4h5" class="card-title"></h5>
+                        <h5 id="fiveday4h5" class="card-title"></h5><img id=iconfiveday4 src="">
                         <p id="fiveday4ptag1" class="card-text"></p>
                         <p id="fiveday4ptag2" class="card-text"></p>
                         <p id="fiveday4ptag3" class="card-text"></p>
@@ -112,10 +113,10 @@
                     </div>
                 </div>
                 
-                <div id="fiveday5" class="m-1 card col-2">
+                <div id="fiveday5" class="fiveday m-1 card col-4 col md-4 col-lg-2">
                 
                     <div class="card-body">
-                        <h5 id="fiveday5h5" class="card-title"></h5>
+                        <h5 id="fiveday5h5" class="card-title"></h5><img id=iconfiveday5 src="">
                         <p id="fiveday5ptag1" class="card-text"></p>
                         <p id="fiveday5ptag2" class="card-text"></p>
                         <p id="fiveday5ptag3" class="card-text"></p>
