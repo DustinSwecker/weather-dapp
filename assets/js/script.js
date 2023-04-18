@@ -23,6 +23,7 @@ var nowDayJS = dayjs().format('MM-DD-YYYY');
 
 //pull from localstorage and convert to create stored city array
 var storedArray = localStorage.getItem("city");
+//stored in lower case to avoid inputting multiple dupes based on case
 var localStorageArray = storedArray.toLowerCase().split(',');
 
 
@@ -53,14 +54,14 @@ $(document).ready(function() {
     createPForCities();
 })
 
-//function to create the 'p' tages from storage
+//function to create the 'p' tags from storage
 function createPForCities() {
 
     
     for(var i = 0; i<filteredCityArray.length && i < 10; i++) {
     var createCity = document.createElement('p');
     createCity.setAttribute('style', 'display: block; background-color: gray; color: black');
-    createCity.setAttribute('class', 'rounded m-1 w-100');
+    createCity.setAttribute('class', 'text-center citynames rounded m-1 w-100');
     createCity.textContent=arrayFirstLetterToCapital()[i];
     searchBar.append(createCity);
         
@@ -81,11 +82,11 @@ function formSubmitHandler(event) {
         localStorage.setItem("city", localStorageArray);
         var addUserInput = document.createElement('p');
         addUserInput.setAttribute('style', 'display: block; background-color: gray; color: black')
-        addUserInput.setAttribute('class', 'rounded m-1 w-100');
+        addUserInput.setAttribute('class', 'text-center citynames rounded m-1 w-100');
         addUserInput.textContent=userInput;
         searchBar.append(addUserInput);
         
-        todayForecastH5.text(userInput + " " + nowDayJS);
+        
         var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid="+weatherApiKey+"&units=imperial"
 
         fetch(requestUrl)
@@ -93,7 +94,7 @@ function formSubmitHandler(event) {
           return response.json();
         })
         .then(function (data) {
-            
+            todayForecastH5.text(userInput + " " + nowDayJS + " " + data.weather.icon);
             todayForecastPtag1.text("Current temp: " + data.main.temp + String.fromCharCode(176));
             todayForecastPtag2.text("Feels like: " + data.main.feels_like +String.fromCharCode(176));
             todayForecastPtag3.text("Humidity: " + data.main.humidity + String.fromCharCode(176));
