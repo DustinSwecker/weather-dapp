@@ -6,12 +6,15 @@ nav {
 
 main {
     background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fwww.safegardgroup.com%2Fweb-content%2Fuploads%2F2019%2F09%2Fsevere-weather-scaled.jpeg%3Ffit%3D2560%252C1706%26ssl%3D1&f=1&nofb=1&ipt=404b94c547151c5cdf596fc4721365749efd13b05e2fa35938f2ec430acb5d45&ipo=images");
+    border-top: 5px solid black;
 }
+
 #weather-dashboard {
     font-size: 250%;
     margin-left: 20px;
     
 }
+
 #weather-format {
     color: #6c6c93;
     text-shadow: 2px 2px black;
@@ -25,5 +28,20 @@ main {
 
 #searchBtn:hover {
     opacity: 70%;
+}
+
+.citynames:hover {
+    opacity: 70%;
+    cursor: pointer;
+
+}
+
+#forecasttoday {
+    background: rgb(153,153,159);
+    background: linear-gradient(90deg, rgba(153,153,159,1) 8%, rgba(227,227,236,1) 40%, rgba(175,198,203,1) 85%);
+}
+.fiveday {
+    background: rgb(153,153,159);
+    background: linear-gradient(90deg, rgba(153,153,159,1) 8%, rgba(227,227,236,1) 40%, rgba(175,198,203,1) 85%);
 }
 
