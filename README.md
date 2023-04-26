@@ -13,7 +13,7 @@ N/A
 
 This site offers the user the ability to input a city name to a weather dashboard and return the current weather as well as the 5 day forecast. Additionally, the user can view past searches and quickly choose the weather based on those searches.
 
-![Weather Dashboard](assets/images/Site_image.png)
+![Weather Dashboard](assets/images/weathdbdapp.png)
 
 
 ## License
