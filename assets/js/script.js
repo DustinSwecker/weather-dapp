@@ -1,4 +1,3 @@
-//to do set up page to load with last city searched
 //to do seperate functions to create better DRY code
 
 //set variables for the api keys to be used
@@ -54,6 +53,7 @@ const arrayFirstLetterToCapital = () => {
 //function to check for the ready state of the page and fill in from local storage the saved city values
 $(document).ready(function() {
     createPForCities();
+    displayLastSearch();
        
     });
 
@@ -71,7 +71,76 @@ function createPForCities() {
 
 };
 
+//function to load last search upon restarting page
+function displayLastSearch() {
+    const lastSearch = localStorage.getItem("city");
+    const lastSearchArray = lastSearch.split(',');
+    const lastUserInput = lastSearchArray.slice(-1);
 
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + lastUserInput + "&appid="+weatherApiKey+"&units=imperial"
+
+    fetch(requestUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+            
+            todayForecastH5.text(lastUserInput + " " + nowDayJS);
+         
+            var iconURL = 'https://openweathermap.org/img/wn/'+data.weather[0].icon+'@2x.png'
+            
+            todayIcon.attr('src', iconURL);
+            todayForecastPtag1.text("Current temp: " + data.main.temp + String.fromCharCode(176));
+            todayForecastPtag2.text("Feels like: " + data.main.feels_like +String.fromCharCode(176));
+            todayForecastPtag3.text("Humidity: " + data.main.humidity + String.fromCharCode(176));
+            todayForecastPtag4.text("Wind: " + data.wind.speed + "mph");
+            todayForecastPtag1.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag2.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag3.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag4.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+    
+        });
+        var requestUrl5day = "https://api.openweathermap.org/data/2.5/forecast?q="+lastUserInput+"&appid="+weatherApiKey+"&units=imperial"
+            //fetch for 5 day url and associated actions to populate fields
+            fetch(requestUrl5day)
+            .then(function (response2) {
+            return response2.json();
+            })
+            .then(function (data2) {
+                
+                for (var i = 1; i<6; i++) {
+                var fiveDayH5 = "#fiveday" + i + "h5";
+                var fiveDayPTag1Concat = "#fiveday" + i + "ptag1";
+                var fiveDayPTag2Concat = "#fiveday" + i + "ptag2";
+                var fiveDayPTag3Concat = "#fiveday" + i + "ptag3";
+                var fiveDayPTag4Concat = "#fiveday" + i + "ptag4";
+                var fiveDayIconUrl = 'https://openweathermap.org/img/wn/'+data2.list[i].weather[0].icon+'@2x.png'
+    
+                var fiveDayHeader=$(fiveDayH5);
+                var fiveDayIconId = "#iconfiveday"+i;
+                var targetFiveDayIcon = $(fiveDayIconId);
+                targetFiveDayIcon.attr('src', fiveDayIconUrl);
+                
+                var fiveDayPTag1=document.querySelector(fiveDayPTag1Concat);
+                var fiveDayPTag2=document.querySelector(fiveDayPTag2Concat);
+                var fiveDayPTag3=document.querySelector(fiveDayPTag3Concat);
+                var fiveDayPTag4=document.querySelector(fiveDayPTag4Concat);
+                var computedDate = dayjs().add(i, 'day').format('MM-DD');
+                fiveDayHeader.text(computedDate);
+                fiveDayPTag1.textContent="Current temp: " + data2.list[i].main.temp + String.fromCharCode(176);
+                fiveDayPTag2.textContent="Feels like: " + data2.list[i].main.feels_like +String.fromCharCode(176);
+                fiveDayPTag3.textContent="Humidity: " + data2.list[i].main.humidity + String.fromCharCode(176);
+                fiveDayPTag4.textContent="Wind: " + data2.list[i].wind.speed + "mph";
+                fiveDayPTag1.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
+                fiveDayPTag2.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
+                fiveDayPTag3.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
+                fiveDayPTag4.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
+    
+                }
+            }); 
+
+    
+}
  
 
 function formSubmitHandler(event) {
@@ -109,10 +178,10 @@ function formSubmitHandler(event) {
             todayForecastPtag2.text("Feels like: " + data.main.feels_like +String.fromCharCode(176));
             todayForecastPtag3.text("Humidity: " + data.main.humidity + String.fromCharCode(176));
             todayForecastPtag4.text("Wind: " + data.wind.speed + "mph");
-            todayForecastPtag1.attr('style', 'font-size: 20px; color: #6c6c93');
-            todayForecastPtag2.attr('style', 'font-size: 20px; color: #6c6c93');
-            todayForecastPtag3.attr('style', 'font-size: 20px; color: #6c6c93');
-            todayForecastPtag4.attr('style', 'font-size: 20px; color: #6c6c93');
+            todayForecastPtag1.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag2.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag3.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag4.attr('style', 'font-size: 20px; font-weight: bold; color: black');
     
         });
     
@@ -148,10 +217,10 @@ function formSubmitHandler(event) {
                 fiveDayPTag2.textContent="Feels like: " + data2.list[i].main.feels_like +String.fromCharCode(176);
                 fiveDayPTag3.textContent="Humidity: " + data2.list[i].main.humidity + String.fromCharCode(176);
                 fiveDayPTag4.textContent="Wind: " + data2.list[i].wind.speed + "mph";
-                fiveDayPTag1.setAttribute('style', 'font-size: 12px; color: black');
-                fiveDayPTag2.setAttribute('style', 'font-size: 12px; color: black');
-                fiveDayPTag3.setAttribute('style', 'font-size: 12px; color: black');
-                fiveDayPTag4.setAttribute('style', 'font-size: 12px; color: black');
+                fiveDayPTag1.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
+                fiveDayPTag2.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
+                fiveDayPTag3.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
+                fiveDayPTag4.setAttribute('style', 'font-size: 16px; font-weight: bold;color: black');
     
                 }
             }); 
@@ -178,10 +247,10 @@ searchBar.on('click', '.citynames', function (event) {
             todayForecastPtag2.text("Feels like: " + data.main.feels_like +String.fromCharCode(176));
             todayForecastPtag3.text("Humidity: " + data.main.humidity + String.fromCharCode(176));
             todayForecastPtag4.text("Wind: " + data.wind.speed + "mph");
-            todayForecastPtag1.attr('style', 'font-size: 20px; color: #6c6c93');
-            todayForecastPtag2.attr('style', 'font-size: 20px; color: #6c6c93');
-            todayForecastPtag3.attr('style', 'font-size: 20px; color: #6c6c93');
-            todayForecastPtag4.attr('style', 'font-size: 20px; color: #6c6c93');
+            todayForecastPtag1.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag2.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag3.attr('style', 'font-size: 20px; font-weight: bold; color: black');
+            todayForecastPtag4.attr('style', 'font-size: 20px; font-weight: bold; color: black');
     
         });
     
@@ -217,10 +286,10 @@ searchBar.on('click', '.citynames', function (event) {
                 fiveDayPTag2.textContent="Feels like: " + data2.list[i].main.feels_like +String.fromCharCode(176);
                 fiveDayPTag3.textContent="Humidity: " + data2.list[i].main.humidity + String.fromCharCode(176);
                 fiveDayPTag4.textContent="Wind: " + data2.list[i].wind.speed + "mph";
-                fiveDayPTag1.setAttribute('style', 'font-size: 12px; color: black');
-                fiveDayPTag2.setAttribute('style', 'font-size: 12px; color: black');
-                fiveDayPTag3.setAttribute('style', 'font-size: 12px; color: black');
-                fiveDayPTag4.setAttribute('style', 'font-size: 12px; color: black');
+                fiveDayPTag1.setAttribute('style', 'font-size: 12px; font-weight: bold;color: black');
+                fiveDayPTag2.setAttribute('style', 'font-size: 12px; font-weight: bold;color: black');
+                fiveDayPTag3.setAttribute('style', 'font-size: 12px; font-weight: bold;color: black');
+                fiveDayPTag4.setAttribute('style', 'font-size: 12px; font-weight: bold;color: black');
                 };
 
     });
