@@ -1,6 +1,7 @@
 nav {
-    background: url("https://media.giphy.com/media/FZzbTJyRTwPuw/giphy.gif");
+    background: url("https://media0.giphy.com/media/fqVodOPZg9uBYvYjes/giphy.webp?cid=ecf05e47bhi8fsw03ew6fi2cpx1x2mcdb2ea9s5z8bpjt0z2&ep=v1_gifs_search&rid=giphy.webp&ct=g");
     background-size: 100% auto;
+    
     
 }
 
@@ -37,11 +38,17 @@ main {
 }
 
 #forecasttoday {
-    background: rgb(153,153,159);
-    background: linear-gradient(90deg, rgba(153,153,159,1) 8%, rgba(227,227,236,1) 40%, rgba(175,198,203,1) 85%);
+    background-image: url("https://images.pexels.com/photos/1275699/pexels-photo-1275699.jpeg?auto=compress&cs=tinysrgb&w=600");
+    background-size: cover;
+    background-blend-mode: luminosity;
+    opacity: 80%;
+    
+    
+    
 }
 .fiveday {
-    background: rgb(153,153,159);
-    background: linear-gradient(90deg, rgba(153,153,159,1) 8%, rgba(227,227,236,1) 40%, rgba(175,198,203,1) 85%);
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.z5MDB2U0cvSzwgpisGCFegHaFP%26pid%3DApi&f=1&ipt=64cc4c15f98733968d5f6d60d42ec6872fac8b89e4ce200eb69eb47a58036bbb&ipo=images");
+    opacity: 80%;
+    
 }
 
